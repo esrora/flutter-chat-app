@@ -118,7 +118,7 @@ class _ChatPageState extends State<ChatPage> with TickerProviderStateMixin {
     _focusNode.requestFocus();
 
     final newMessage = new ChatMessage(
-      uid: '1233',
+      uid: '12322',
       texto: texto,
       animationController: AnimationController(
         vsync: this,
@@ -136,7 +136,9 @@ class _ChatPageState extends State<ChatPage> with TickerProviderStateMixin {
   @override
   void dispose() {
     //TODO Quitar socket
-
+    for (ChatMessage message in _messages) {
+      message.animationController.dispose();
+    }
     super.dispose();
   }
 }
